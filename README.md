@@ -17,9 +17,7 @@
 - [🛠️ Arsitektur Teknologi](#-arsitektur-teknologi)
 - [📂 Struktur Proyek](#-struktur-proyek)
 - [⚙️ Pengaturan Dasar](#-pengaturan-dasar)
-- [🖥️ Penggunaan](#%EF%B8%8F-penggunaan)
 - [📡 Dokumentasi API](#-dokumentasi-api)
-- [🎨 Desain & Estetika](#-desain--estetika)
 - [🏗️ Roadmap Pengembangan](#-roadmap-pengembangan-project-roadmap)
 
 ---
@@ -43,11 +41,6 @@
 - **Kategorisasi Cerdas**: Pisahkan antara pekerjaan, urusan pribadi, keuangan, dan kesehatan.
 - **Deadline Tracker**: Atur tanggal jatuh tempo dengan visualisasi sisa waktu.
 - **Task Analytics**: Ringkasan jumlah tugas (Total, Pending, Completed) otomatis.
-
-### 🎨 UI/UX & Desain Estetika (Premium Glossy)
-- **Glassmorphism Design**: Antarmuka modern dengan efek transparansi dan blur.
-- **Responsive Layout**: Optimal untuk Smartphone, Tablet, hingga Layar 4K.
-- **Micro-Animations**: Transisi halus menggunakan Framer Motion.
 
 ---
 
