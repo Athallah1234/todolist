@@ -113,13 +113,51 @@ npm run dev
 
 ---
 
-## 📂 Struktur Proyek
-- `app/api/`: Endpoint backend (Tasks, Subscribe, Auth).
-- `components/`: UI dasar dan logika reusabel.
-- `hooks/`: Custom react hooks.
-- `lib/`: Utils untuk notifikasi dan konfigurasi.
-- `models/`: Skema data MongoDB.
-- `public/`: Aset statis dan `sw.js`.
+## 📂 Struktur Proyek (Project Structure)
+
+Berikut adalah hierarki struktur folder dan file pada proyek **Check-It** untuk memudahkan navigasi pengembangan:
+
+```text
+.
+├── app/                        # 🌐 App Router (Next.js 14+)
+│   ├── api/                    # ⚙️ Backend API Handlers
+│   │   ├── auth/               # 🔐 Auth API (Register/Login)
+│   │   ├── tasks/              # 📋 Tasks CRUD API
+│   │   └── subscribe/          # 🔔 Notification Subscription API
+│   ├── auth/                   # 🔑 Halaman Autentikasi (UI)
+│   │   ├── login/              # 🚪 Halaman Login
+│   │   └── register/           # 📝 Halaman Pendaftaran
+│   ├── dashboard/              # 🏠 Antarmuka Dashboard Utama
+│   │   ├── categories/         # 📁 Filter Berdasarkan Kategori
+│   │   ├── deadlines/          # 📅 Filter Berdasarkan Tenggat Waktu
+│   │   ├── layout.tsx          # 🖼️ Dashboard Sidebar & Header Layout
+│   │   └── page.tsx            # 📊 Main View (Daftar Semua Task)
+│   ├── favicon.ico             # アイコン Favicon
+│   ├── globals.css             # 🎨 Global Tailwind Styles
+│   ├── layout.tsx              # 🏗️ Root Layout & Provider Wrapper
+│   └── page.tsx                # 🚀 Entry Point (Landing Page)
+├── components/                 # 🧩 Komponen UI Reusable
+│   ├── ui/                     # 💎 Komponen Dasar (Button, Input, Card)
+│   ├── Header.tsx              # 👤 Komponen Header Dashboard
+│   ├── Sidebar.tsx             # navigation Komponen Navigasi Sidebar
+│   └── TaskCard.tsx            # 🗃️ Komponen Visualisasi Item Task
+├── hooks/                      # ⚓ Custom React Hooks
+│   └── useNotifications.ts     # 🔔 Logika Registrasi Notifikasi
+├── lib/                        # 📚 Utilitas & Konfigurasi
+│   ├── mongodb.ts              # 🔌 Koneksi Database MongoDB
+│   ├── notifications.ts        # 📧 SMTP & Web-Push Handlers
+│   └── utils.ts                # 🛠️ Helper Functions umum
+├── models/                     # 🧱 Data Modeling (Mongoose)
+│   ├── Task.ts                 # 📑 Skema Data Tugas
+│   └── User.ts                 # 👤 Skema Data Pengguna
+├── public/                     # 📁 Aset Statis
+│   ├── icons/                  # 🖼️ App Icons (PWA & Notif)
+│   └── sw.js                   # 🤖 Service Worker (Push Handler)
+├── store/                      # 🧠 State Management (Zustand)
+│   └── useTaskStore.ts         # 📦 Global Store untuk Data Task
+├── types/                      # 🏷️ TypeScript Definitions
+└── .env                        # 🤫 Variabel Lingkungan (Sensitif)
+```
 
 ---
 
