@@ -154,6 +154,87 @@ Berikut adalah hierarki struktur folder dan file pada proyek **Check-It** untuk 
 
 ---
 
+## 📡 Dokumentasi API (API Reference)
+
+Check-It menggunakan API internal berbasis RESTful. Semua request (kecuali registrasi) memerlukan sesi aktif melalui NextAuth.js.
+
+### 🔐 Autentikasi
+#### 1. Register User
+- **Endpoint**: `POST /api/auth/register`
+- **Body**:
+  ```json
+  {
+    "name": "User Name",
+    "email": "user@example.com",
+    "password": "securepassword123"
+  }
+  ```
+- **Response (201)**: `{ "message": "User created successfully" }`
+
+#### 2. Login
+- **Endpoint**: `POST /api/auth/callback/credentials` (Handled by NextAuth)
+- **Keterangan**: Menggunakan provider kredensial untuk memverifikasi email dan password.
+
+---
+
+### 📋 Manajemen Tugas (Tasks)
+#### 1. Dapatkan Semua Tugas
+- **Endpoint**: `GET /api/tasks`
+- **Auth required**: Yes
+- **Response (200)**: 
+  ```json
+  [
+    {
+      "_id": "65f...",
+      "title": "Belajar Next.js",
+      "category": "Work",
+      "status": "pending",
+      "deadline": "2024-12-31T00:00:00.000Z"
+    }
+  ]
+  ```
+
+#### 2. Buat Tugas Baru
+- **Endpoint**: `POST /api/tasks`
+- **Body**:
+  ```json
+  {
+    "title": "Daily Workout",
+    "description": "30 mins cardio",
+    "category": "Health",
+    "deadline": "2024-05-20"
+  }
+  ```
+- **Keterangan**: Memicu notifikasi email dan push saat berhasil dibuat.
+
+#### 3. Update Status/Data Tugas
+- **Endpoint**: `PUT /api/tasks/[id]`
+- **Body**: `{ "status": "completed" }` atau `{ "title": "Updated Title" }`
+
+#### 4. Hapus Tugas
+- **Endpoint**: `DELETE /api/tasks/[id]`
+
+---
+
+### 🔔 Notifikasi
+#### 1. Registrasi Push Subscription
+- **Endpoint**: `POST /api/auth/subscribe`
+- **Body**:
+  ```json
+  {
+    "subscription": {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/...",
+      "keys": {
+        "p256dh": "...",
+        "auth": "..."
+      }
+    }
+  }
+  ```
+- **Keterangan**: Menyimpan endpoint push browser ke database user.
+
+---
+
 ## 🏗️ Roadmap Pengembangan (Project Roadmap)
 
 Rencana pengembangan **Check-It** dibagi menjadi beberapa fase strategis untuk memastikan kualitas dan fitur yang kompetitif:
