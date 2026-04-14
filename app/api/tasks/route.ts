@@ -3,6 +3,8 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "../auth/[...nextauth]/route";
 import connectDB from "@/lib/mongodb";
 import Task from "@/models/Task";
+import User from "@/models/User";
+import { sendEmailNotification, sendPushNotification } from "@/lib/notifications";
 
 export async function GET(req: Request) {
   try {
@@ -36,16 +38,39 @@ export async function POST(req: Request) {
     }
 
     await connectDB();
+    const userId = (session.user as any).id;
     const newTask = await Task.create({
       title,
       description,
       category,
       deadline,
-      userId: (session.user as any).id,
+      userId,
     });
+
+    // Handle Notifications
+    const user = await User.findById(userId);
+    if (user) {
+      // Send Email
+      await sendEmailNotification(
+        user.email,
+        "New Task Created",
+        `You have successfully created a new task: "${title}" in the ${category} category.`
+      );
+
+      // Send Push Notification if subscription exists
+      if (user.pushSubscription) {
+        await sendPushNotification(user.pushSubscription, {
+          title: "New Task!",
+          body: `Task "${title}" has been added.`,
+          icon: "/icons/icon-192x192.png", // Ensure this exists or use a generic one
+        });
+      }
+    }
 
     return NextResponse.json(newTask, { status: 201 });
   } catch (error: any) {
-    return NextResponse.json({ message: error.message }, { status: 500 });
+    console.error("Task creation notification error:", error);
+    // We still return the task even if notification fails
+    return NextResponse.json({ message: "Task created, but notification failed." }, { status: 201 });
   }
 }
