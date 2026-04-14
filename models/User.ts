@@ -16,6 +16,9 @@ const UserSchema = new Schema({
     required: [true, 'Please provide a password'],
     minlength: [6, 'Password should be at least 6 characters long'],
   },
+  pushSubscription: {
+    type: Object,
+  },
 }, {
   timestamps: true,
 });
