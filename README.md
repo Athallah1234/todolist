@@ -20,7 +20,7 @@
 - [🖥️ Penggunaan](#%EF%B8%8F-penggunaan)
 - [📡 Dokumentasi API](#-dokumentasi-api)
 - [🎨 Desain & Estetika](#-desain--estetika)
-- [🏗️ Rencana Pengembangan](#%EF%B8%8F-rencana-pengembangan)
+- [🏗️ Roadmap Pengembangan](#-roadmap-pengembangan-project-roadmap)
 
 ---
 
@@ -120,6 +120,37 @@ npm run dev
 - `lib/`: Utils untuk notifikasi dan konfigurasi.
 - `models/`: Skema data MongoDB.
 - `public/`: Aset statis dan `sw.js`.
+
+---
+
+## 🏗️ Roadmap Pengembangan (Project Roadmap)
+
+Rencana pengembangan **Check-It** dibagi menjadi beberapa fase strategis untuk memastikan kualitas dan fitur yang kompetitif:
+
+### 🌑 Fase 1: Fondasi & Core (Selesai)
+- [x] Inisialisasi Project dengan Next.js 14 & TypeScript.
+- [x] Integrasi MongoDB & Authentication (NextAuth).
+- [x] Fitur Dasar CRUD (Create, Read, Update, Delete) Task.
+- [x] Dashboard Filter (All, Pending, Completed).
+- [x] Estetika Desain Glassmorphism & Responsivitas Mobile.
+
+### 🌓 Fase 2: Komunikasi & Engagement (Selesai)
+- [x] Integrasi Nodemailer untuk Notifikasi Email Otomatis.
+- [x] Implementasi Web Push Notification (VAPID Protocol).
+- [x] Service Worker untuk pendeteksian push di background.
+- [x] Statistik Task di Header Dashboard.
+
+### 🌔 Fase 3: Optimasi & Produktivitas (Sedang Berjalan)
+- [ ] **Mode Gelap (Dark Mode)**: Implementasi tema gelap yang menyeluruh dan elegan.
+- [ ] **Prioritas Task**: Label prioritas (High, Medium, Low) dengan indikator warna.
+- [ ] **Drag-and-Drop**: Pengaturan urutan task secara visual dengan antarmuka seret-lepas.
+- [ ] **Search Engine**: Pencarian teks penuh (full-text search) untuk ribuan task.
+
+### 🌕 Fase 4: Ekosistem & Integrasi (Masa Depan)
+- [ ] **Calendar View**: Visualisasi deadline dalam format kalender interaktif.
+- [ ] **Export Data**: Fitur ekspor daftar tugas ke format PDF atau CSV.
+- [ ] **Integrasi Kalender**: Sinkronisasi otomatis dengan Google Calendar & Outlook.
+- [ ] **Multi-User Collaboration**: Berbagi daftar tugas antar rekan kerja (Team Work).
 
 ---
 
