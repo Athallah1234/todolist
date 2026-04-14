@@ -1,16 +1,24 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { Search, Bell, User as UserIcon } from "lucide-react";
+import { Search, Bell, User as UserIcon, Menu } from "lucide-react";
 import { useState } from "react";
+import { useUIStore } from "@/store/useUIStore";
 
 export default function Header() {
   const { data: session } = useSession();
   const [search, setSearch] = useState("");
+  const { toggleSidebar } = useUIStore();
 
   return (
-    <header className="h-20 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-40">
-      <div className="flex-1 max-w-xl">
+    <header className="h-20 bg-white border-b border-slate-200 px-4 md:px-6 flex items-center justify-between sticky top-0 z-40">
+      <div className="flex items-center gap-4 flex-1 max-w-xl">
+        <button 
+          onClick={toggleSidebar}
+          className="lg:hidden p-2 text-slate-600 hover:bg-slate-50 rounded-xl transition"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
         <div className="relative group">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-indigo-600 transition" />
           <input
